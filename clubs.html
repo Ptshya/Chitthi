@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose your Snail Mail Club at Chitthi. Healing, Vintage, Horoscope, Fan Club, or the Annual Mystery Snail Mail.">
+  <title>The Snail Mail Clubs — Chitthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .clubs-hero {
+      text-align: center;
+      padding: 80px 0 40px 0;
+    }
+    .clubs-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .club-detail-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 40px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: var(--transition-smooth);
+    }
+    .club-detail-card::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px dashed rgba(var(--color-accent-rgb), 0.12);
+      pointer-events: none;
+    }
+    .club-detail-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-accent);
+      box-shadow: 0 15px 35px var(--shadow-color);
+    }
+    .club-features {
+      list-style: none;
+      margin: 20px 0 30px 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+    .club-features li {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .club-features li::before {
+      content: "✦";
+      color: var(--color-accent);
+      font-size: 0.75rem;
+    }
+    
+    /* Annual highlight panel styling */
+    .annual-highlight-section {
+      margin-top: 80px;
+      padding: 60px;
+      background-color: rgba(var(--color-accent-rgb), 0.03);
+      border: 1px solid var(--color-accent);
+      position: relative;
+    }
+    .annual-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .annual-badge {
+      font-family: var(--font-sc);
+      font-size: 0.8rem;
+      background-color: var(--color-primary);
+      color: #faf7f2;
+      padding: 6px 12px;
+      letter-spacing: 0.1em;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      .annual-grid {
+        grid-template-columns: 1fr;
+      }
+      .annual-highlight-section {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Delivery Banner -->
+  <div class="delivery-banner">
+    <span>✦ 100% Free Delivery Within Nepal ✦</span>
+    <button class="theme-switcher">✦ Dark Theme</button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-area">
+        <svg viewBox="0 0 100 100" class="logo-icon-svg">
+          <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z" fill="var(--color-primary)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 1"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
+          <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="var(--color-accent)"/>
+          <rect x="42" y="52" width="14" height="9" rx="1" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M42 52 L49 57.5 L56 52" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M57 38 L58.5 41 L61.5 41 L59 43 L60 46 L57 44 L54 46 L55 43 L52.5 41 L55.5 41 Z" fill="var(--color-accent)"/>
+          <path d="M36 68 C40 68, 48 65, 54 58" fill="none" stroke="var(--color-accent)" stroke-width="0.8"/>
+          <path d="M42 66 C42 64, 45 64, 45 66 Z" fill="var(--color-accent)"/>
+          <path d="M48 63 C47 61, 50 61, 50 63 Z" fill="var(--color-accent)"/>
+          <path d="M52 60 C51 58, 54 58, 54 60 Z" fill="var(--color-accent)"/>
+        </svg>
+        <div>
+          <span class="logo-text">CHITTHI</span>
+          <span class="logo-subtext">Letters that arrive when memories matter most</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="clubs.html" class="nav-link active">Clubs</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="story.html" class="nav-link">Our Story</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="events.html" class="nav-link">Events</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost auth-trigger">Login</button>
+        <a href="write.html" class="btn btn-primary">Write Now &rarr;</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Clubs Content -->
+  <main class="container section-padding" style="padding-top: 60px;">
+    <div class="clubs-hero">
+      <h4 style="color: var(--color-accent); font-family: var(--font-sc); letter-spacing: 0.15em;">Themed Monthly Mail</h4>
+      <h2 style="font-size: 3rem;">Select Your Snail Mail Club</h2>
+      <div class="section-divider-line"></div>
+      <p style="max-width: 700px; margin: 20px auto 0 auto;">
+        Write your heartfelt message and let Chitthi curate the paper, envelopes, bookmarks, stickers, and keychains that match the theme. Deliveries are dispatched in the first few days of the upcoming month.
+      </p>
+    </div>
+
+    <!-- 4 Cards Grid -->
+    <div class="clubs-container">
+      
+      <!-- Healing Club -->
+      <div class="club-detail-card">
+        <span class="club-card-badge">✦ Emotional Comfort</span>
+        <h3 class="club-card-title">Healing Club</h3>
+        <p class="club-card-description">Letters and curated tokens aimed at providing comfort, peace, mindfulness, and soothing emotions.</p>
+        <div class="club-card-price">NPR 180 <span style="font-size: 0.9rem; font-weight: normal; color: var(--color-text-muted);">/ month</span></div>
+        
+        <ul class="club-features">
+          <li>Custom healing watercolor print envelope</li>
+          <li>Curated floral/nature bookmark</li>
+          <li>Matching mindfulness sticker sheets</li>
+          <li>Delivered: 1st few days of next month</li>
+          <li>From: Chitthi</li>
+        </ul>
+        
+        <a href="write.html?club=healing" class="btn btn-primary" style="margin-top: auto; width: 100%;">Write & Subscribe</a>
+      </div>
+
+      <!-- Fan Club -->
+      <div class="club-detail-card">
+        <span class="club-card-badge">✦ Voted Pop Culture</span>
+        <h3 class="club-card-title">Fan Club</h3>
+        <p class="club-card-description">Themed around winning dramas, manhwa, anime, or series as voted on by our social media community.</p>
+        <div class="club-card-price">NPR 200 <span style="font-size: 0.9rem; font-weight: normal; color: var(--color-text-muted);">/ month</span></div>
+        
+        <ul class="club-features">
+          <li>Community-voted anime/manhwa art theme</li>
+          <li>Collectible photocard of the theme</li>
+          <li>Custom themed die-cut sticker pack</li>
+          <li>Delivered: 1st few days of next month</li>
+          <li>From: Chitthi</li>
+        </ul>
+        
+        <a href="write.html?club=fan" class="btn btn-primary" style="margin-top: auto; width: 100%;">Write & Subscribe</a>
+      </div>
+
+      <!-- Vintage Club -->
+      <div class="club-detail-card">
+        <span class="club-card-badge">✦ Classic Ephemera</span>
+        <h3 class="club-card-title">Vintage Club</h3>
+        <p class="club-card-description">Retro-styled envelopes, vintage-grained writing sheets, completed with a real hand-stamped wax seal.</p>
+        <div class="club-card-price">NPR 220 <span style="font-size: 0.9rem; font-weight: normal; color: var(--color-text-muted);">/ month</span></div>
+        
+        <ul class="club-features">
+          <li>Parchment/linen-grained paper stock</li>
+          <li>Real hot burgundy wax seal finish</li>
+          <li>Vintage sketch retro bookmark</li>
+          <li>Delivered: 1st few days of next month</li>
+          <li>From: Chitthi</li>
+        </ul>
+        
+        <a href="write.html?club=vintage" class="btn btn-primary" style="margin-top: auto; width: 100%;">Write & Subscribe</a>
+      </div>
+
+      <!-- Horoscope Club -->
+      <div class="club-detail-card">
+        <span class="club-card-badge">✦ Astronomical Transit</span>
+        <h3 class="club-card-title">Horoscope Club</h3>
+        <p class="club-card-description">Cosmic letters centered on active zodiac alignments, constellations, and spiritual guidance readings.</p>
+        <div class="club-card-price">NPR 250 <span style="font-size: 0.9rem; font-weight: normal; color: var(--color-text-muted);">/ month</span></div>
+        
+        <ul class="club-features">
+          <li>Night-sky celestial ink print layout</li>
+          <li>Zodiac constellation art card</li>
+          <li>Astronomical guidance bookmark</li>
+          <li>Delivered: 1st few days of next month</li>
+          <li>From: Chitthi</li>
+        </ul>
+        
+        <a href="write.html?club=horoscope" class="btn btn-primary" style="margin-top: auto; width: 100%;">Write & Subscribe</a>
+      </div>
+
+    </div>
+
+    <!-- Annual Subscription Highlight Panel -->
+    <div class="annual-highlight-section">
+      <div class="annual-grid">
+        <div>
+          <span class="annual-badge">✦ Premium Secret Journey</span>
+          <h2 style="font-size: 2.5rem; margin-bottom: 16px; font-style: normal;">Annual Mystery Snail Mail</h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 24px;">
+            A secret curated envelope sent every month for a year. The themes and stationery contents are kept completely confidential until they land in the recipient's hands. Includes premium photo cards, stickers, keychains, and exclusive lucky winner add-ons. 
+            <br><strong style="color: var(--color-accent);">Chitthi curates and writes the letters completely</strong>—you only specify who receives them.
+          </p>
+          <p style="font-size: 0.9rem; font-style: italic; color: var(--color-text-muted);">
+            *Compulsory Login and Account creation required before subscribing.
+          </p>
+        </div>
+        <div style="text-align: center; border-left: 1px dashed var(--border-color); padding-left: 20px;">
+          <div style="font-family: var(--font-display); font-size: 3rem; color: var(--color-accent); font-weight: bold; margin-bottom: 10px;">NPR 2000</div>
+          <p style="font-size: 0.9rem; margin-bottom: 24px; color: var(--color-text-muted);">12 Letters curated over 1 Year</p>
+          <button id="annual-sub-btn" class="btn btn-primary" style="width: 100%; max-width: 280px; gap: 8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            Subscribe Annual Mystery
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <svg viewBox="0 0 1440 200" class="mountain-silhouette" preserveAspectRatio="none">
+      <path d="M0,200 L1440,200 L1440,80 L1350,110 L1200,60 L1080,90 L920,40 L780,100 L650,55 L520,95 L380,45 L220,115 L110,65 L0,120 Z"/>
+    </svg>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
+        <p>Nepal's first future letter platform. Preserving emotions and delivering them exactly when they matter most.</p>
+        <p style="font-size: 0.9rem; color: var(--color-accent);">npchitthi@gmail.com<br>Instagram: @chitthi.np</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">The Snail Mail Clubs</a></li>
+          <li><a href="write.html">Write a Letter</a></li>
+          <li><a href="pricing.html">Pricing Transparency</a></li>
+          <li><a href="events.html">Upcoming Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">Common Questions (FAQ)</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy & Encryption</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Encrypt & Secure</h4>
+        <p>All digital letters are stored with secure server backups and printed near the release date to ensure complete confidentiality.</p>
+        <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
+      <span class="footer-tagline">Every letter is a time capsule. 💌</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('annual-sub-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const loggedIn = localStorage.getItem('userLoggedIn') === 'true';
+      if (loggedIn) {
+        // Redirect to writing page with annual theme
+        window.location.href = 'write.html?club=annual';
+      } else {
+        // Trigger login modal
+        alert('Compulsory sign up / login is required to subscribe to the Annual Mystery Snail Mail.');
+        const modal = document.getElementById('auth-modal');
+        if (modal) modal.classList.add('active');
+      }
+    });
+
+    // Listen to changes in auth status to update button
+    window.addEventListener('authChanged', updateAnnualButton);
+    window.addEventListener('DOMContentLoaded', updateAnnualButton);
+
+    function updateAnnualButton() {
+      const loggedIn = localStorage.getItem('userLoggedIn') === 'true';
+      const btn = document.getElementById('annual-sub-btn');
+      if (loggedIn) {
+        btn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+            <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L22 2"></path>
+          </svg>
+          Configure Annual Mystery &rarr;
+        `;
+      } else {
+        btn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Subscribe Annual Mystery
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

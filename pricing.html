@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chitthi pricing transparent rates. Calculate standard letter, future capsule, and club subscriptions.">
+  <title>Pricing Transparency — Chitthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .pricing-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 40px 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--color-accent);
+      background-color: rgba(var(--color-accent-rgb), 0.02);
+    }
+    .pricing-card.featured::after {
+      content: "POPULAR";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--color-accent);
+      color: var(--bg-primary);
+      font-family: var(--font-sc);
+      font-size: 0.6rem;
+      padding: 2px 8px;
+      letter-spacing: 0.1em;
+    }
+    .price-value {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: var(--color-accent);
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .price-features-list {
+      list-style: none;
+      text-align: left;
+      margin: 20px 0 30px 0;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+    .price-features-list li {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+    .price-features-list li::before {
+      content: "✦ ";
+      color: var(--color-accent);
+    }
+    
+    /* Interactive Sandbox styling */
+    .calculator-sandbox {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 40px;
+      margin-top: 80px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Delivery Banner -->
+  <div class="delivery-banner">
+    <span>✦ 100% Free Delivery Within Nepal ✦</span>
+    <button class="theme-switcher">✦ Dark Theme</button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-area">
+        <svg viewBox="0 0 100 100" class="logo-icon-svg">
+          <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z" fill="var(--color-primary)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 1"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
+          <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="var(--color-accent)"/>
+          <rect x="42" y="52" width="14" height="9" rx="1" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M42 52 L49 57.5 L56 52" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M57 38 L58.5 41 L61.5 41 L59 43 L60 46 L57 44 L54 46 L55 43 L52.5 41 L55.5 41 Z" fill="var(--color-accent)"/>
+          <path d="M36 68 C40 68, 48 65, 54 58" fill="none" stroke="var(--color-accent)" stroke-width="0.8"/>
+          <path d="M42 66 C42 64, 45 64, 45 66 Z" fill="var(--color-accent)"/>
+          <path d="M48 63 C47 61, 50 61, 50 63 Z" fill="var(--color-accent)"/>
+          <path d="M52 60 C51 58, 54 58, 54 60 Z" fill="var(--color-accent)"/>
+        </svg>
+        <div>
+          <span class="logo-text">CHITTHI</span>
+          <span class="logo-subtext">Letters that arrive when memories matter most</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="clubs.html" class="nav-link">Clubs</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="story.html" class="nav-link">Our Story</a></li>
+        <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+        <li><a href="events.html" class="nav-link">Events</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost auth-trigger">Login</button>
+        <a href="write.html" class="btn btn-primary">Write Now &rarr;</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Pricing Overview -->
+  <header class="container" style="text-align: center; padding: 80px 0 20px 0;">
+    <h4 style="color: var(--color-accent); font-family: var(--font-sc); letter-spacing: 0.15em;">No Hidden Costs</h4>
+    <h2 style="font-size: 3rem;">Pricing Transparency</h2>
+    <div class="section-divider-line"></div>
+    <p style="max-width: 750px; margin: 20px auto 0 auto;">
+      We aim to make emotional gifting an affordable luxury. Our pricing model supports premium paper curation, secure server backups, custom calligraphy, and doorstep delivery across Nepal.
+    </p>
+  </header>
+
+  <!-- Pricing Tiers Grid -->
+  <main class="container" style="padding-bottom: 80px;">
+    
+    <div class="pricing-grid">
+      <!-- Standard -->
+      <div class="pricing-card">
+        <h4 style="color: var(--color-text);">Standard Snail Mail</h4>
+        <div class="price-value">NPR 100</div>
+        <p style="font-size: 0.85rem; color: var(--color-text-muted);">Delivered in 1st week of writing</p>
+        <ul class="price-features-list">
+          <li>Linen-textured writing sheet</li>
+          <li>Up to 500 words included</li>
+          <li>From: Customizable</li>
+          <li>Free delivery within Nepal</li>
+        </ul>
+        <a href="write.html" class="btn btn-secondary" style="margin-top: auto; width: 100%;">Write Standard</a>
+      </div>
+
+      <!-- Snail Mail Clubs -->
+      <div class="pricing-card featured">
+        <h4 style="color: var(--color-text);">Monthly Themed Clubs</h4>
+        <div class="price-value">NPR 180<span style="font-size: 1rem; font-weight: normal;"> - 250</span></div>
+        <p style="font-size: 0.85rem; color: var(--color-text-muted);">Healing, Fan, Vintage, Horoscope</p>
+        <ul class="price-features-list">
+          <li>Custom monthly themed artwork</li>
+          <li>Collectible themed bookmark</li>
+          <li>Stickers & keychains included</li>
+          <li>Delivered: 1st week of next month</li>
+          <li>From: Chitthi</li>
+        </ul>
+        <a href="clubs.html" class="btn btn-primary" style="margin-top: auto; width: 100%;">View Clubs</a>
+      </div>
+
+      <!-- Annual Mystery -->
+      <div class="pricing-card">
+        <h4 style="color: var(--color-text);">Annual Mystery Mail</h4>
+        <div class="price-value">NPR 2000</div>
+        <p style="font-size: 0.85rem; color: var(--color-text-muted);">12 secret theme packages over 1 year</p>
+        <ul class="price-features-list">
+          <li>12 Mystery letters over the year</li>
+          <li>Premium custom photo cards</li>
+          <li>Keychain & mystery gift add-on</li>
+          <li>Fully written & curated by Chitthi</li>
+          <li>Requires Login to purchase</li>
+        </ul>
+        <a href="clubs.html" class="btn btn-secondary" style="margin-top: auto; width: 100%;">Subscribe Annual</a>
+      </div>
+    </div>
+
+    <!-- Comparative Table -->
+    <div class="pricing-table-container">
+      <h3 style="margin-top: 60px; font-style: normal; text-align: center;">Detailed Customization Matrix</h3>
+      <table class="pricing-table" style="margin-top: 24px;">
+        <thead>
+          <tr>
+            <th>Service / Option</th>
+            <th>Rate</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Base Letter (Standard)</td>
+            <td>NPR 100</td>
+            <td>Printed, packaged, and delivered within the 1st week of writing.</td>
+          </tr>
+          <tr>
+            <td>Time Capsule Scheduling (up to 1 Year)</td>
+            <td>+NPR 50</td>
+            <td>Scheduled future delivery (later than 1 week). Stored securely.</td>
+          </tr>
+          <tr>
+            <td>Additional Time Capsule Years</td>
+            <td>+NPR 50 / Year</td>
+            <td>Up to 5 years maximum (+NPR 250 total delivery fee).</td>
+          </tr>
+          <tr>
+            <td>Word Limit Extension (501 - 1000 words)</td>
+            <td>+NPR 20</td>
+            <td>Required to continue typing beyond the standard 500-word limit.</td>
+          </tr>
+          <tr>
+            <td>Calligraphy Handwriting by Chitthi</td>
+            <td>+NPR 20 / 500 words</td>
+            <td>NPR 20 for letters up to 500 words, NPR 40 for letters 501–1000 words.</td>
+          </tr>
+          <tr>
+            <td>Monthly Clubs (Healing / Fan / Vintage / Horoscope)</td>
+            <td>NPR 180 - 250</td>
+            <td>Includes specialized paper, bookmarks, themed stickers, and accessories.</td>
+          </tr>
+          <tr>
+            <td>Delivery Cost within Nepal Boundaries</td>
+            <td style="color: var(--color-accent); font-weight: bold;">FREE</td>
+            <td>100% complimentary delivery across all districts. No hidden charges.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sandbox Price Simulator Widget -->
+    <div class="calculator-sandbox">
+      <div class="calc-grid">
+        <div>
+          <h2 style="font-size: 2.2rem; font-style: normal; margin-bottom: 12px; color: var(--color-accent);">Live Pricing Simulator</h2>
+          <p style="font-size: 0.95rem; margin-bottom: 30px;">
+            Adjust the sliders and options below to calculate the exact price of your letter before entering the writing workspace.
+          </p>
+
+          <!-- Type Selector -->
+          <div class="control-group">
+            <label class="control-label" for="calc-type">Letter / Club Category</label>
+            <select id="calc-type" class="form-select">
+              <option value="100">Standard Letter (Base NPR 100)</option>
+              <option value="180">Healing Club (NPR 180/mo)</option>
+              <option value="200">Fan Club (NPR 200/mo)</option>
+              <option value="220">Vintage Club (NPR 220/mo)</option>
+              <option value="250">Horoscope Club (NPR 250/mo)</option>
+              <option value="2000">Annual Mystery Snail Mail (NPR 2000/yr)</option>
+            </select>
+          </div>
+
+          <!-- Word count choice -->
+          <div class="control-group" id="calc-words-group">
+            <label class="control-label" for="calc-words">Word Limit Choice</label>
+            <select id="calc-words" class="form-select">
+              <option value="0">Up to 500 words (Included)</option>
+              <option value="20">501 - 1000 words (+NPR 20)</option>
+            </select>
+          </div>
+
+          <!-- Handwriting choice -->
+          <div class="control-group" id="calc-handwritten-group">
+            <label class="control-label">Handwriting Option</label>
+            <label class="option-checkbox-container">
+              <input type="checkbox" id="calc-handwritten">
+              <span class="custom-checkbox"></span>
+              <span style="font-size: 0.95rem;">Hand-written by Chitthi (+NPR 20 per 500 words)</span>
+            </label>
+          </div>
+
+          <!-- Timeframe selector -->
+          <div class="control-group" id="calc-schedule-group">
+            <label class="control-label" for="calc-schedule">Time Capsule Storage</label>
+            <select id="calc-schedule" class="form-select">
+              <option value="0">Standard Delivery (Within 1 week - Free)</option>
+              <option value="50">Schedule Future Delivery (1 Month to 1 Year - +NPR 50)</option>
+              <option value="100">Schedule Future Delivery (1 to 2 Years - +NPR 100)</option>
+              <option value="150">Schedule Future Delivery (2 to 3 Years - +NPR 150)</option>
+              <option value="200">Schedule Future Delivery (3 to 4 Years - +NPR 200)</option>
+              <option value="250">Schedule Future Delivery (4 to 5 Years - +NPR 250)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="text-align: center; border-left: 1px dashed var(--border-color); padding-left: 20px;">
+          <h4 style="color: var(--color-text-muted); margin-bottom: 10px;">Calculated Rate</h4>
+          <div id="calc-total" style="font-family: var(--font-display); font-size: 3.5rem; color: var(--color-accent); font-weight: bold; margin-bottom: 24px;">NPR 100</div>
+          <a href="write.html" id="calc-cta-btn" class="btn btn-primary" style="width: 100%; max-width: 250px;">Go to Writing Desk &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <svg viewBox="0 0 1440 200" class="mountain-silhouette" preserveAspectRatio="none">
+      <path d="M0,200 L1440,200 L1440,80 L1350,110 L1200,60 L1080,90 L920,40 L780,100 L650,55 L520,95 L380,45 L220,115 L110,65 L0,120 Z"/>
+    </svg>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
+        <p>Nepal's first future letter platform. Preserving emotions and delivering them exactly when they matter most.</p>
+        <p style="font-size: 0.9rem; color: var(--color-accent);">npchitthi@gmail.com<br>Instagram: @chitthi.np</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">The Snail Mail Clubs</a></li>
+          <li><a href="write.html">Write a Letter</a></li>
+          <li><a href="pricing.html">Pricing Transparency</a></li>
+          <li><a href="events.html">Upcoming Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">Common Questions (FAQ)</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy & Encryption</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Encrypt & Secure</h4>
+        <p>All digital letters are stored with secure server backups and printed near the release date to ensure complete confidentiality.</p>
+        <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
+      <span class="footer-tagline">Every letter is a time capsule. 💌</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // --- Pricing Calculator Sandbox Logic ---
+    const calcType = document.getElementById('calc-type');
+    const calcWords = document.getElementById('calc-words');
+    const calcHandwritten = document.getElementById('calc-handwritten');
+    const calcSchedule = document.getElementById('calc-schedule');
+    const calcTotal = document.getElementById('calc-total');
+    const calcCta = document.getElementById('calc-cta-btn');
+    
+    const wordsGroup = document.getElementById('calc-words-group');
+    const hwGroup = document.getElementById('calc-handwritten-group');
+    const schedGroup = document.getElementById('calc-schedule-group');
+
+    function runCalculator() {
+      const typeBase = parseInt(calcType.value);
+      
+      // If Annual Mystery is selected
+      if (typeBase === 2000) {
+        wordsGroup.style.display = 'none';
+        hwGroup.style.display = 'none';
+        schedGroup.style.display = 'none';
+        
+        calcTotal.textContent = `NPR 2000`;
+        calcCta.href = 'clubs.html'; // Take to clubs page first to enforce login
+        return;
+      }
+      
+      // Show custom options for other types
+      wordsGroup.style.display = 'block';
+      hwGroup.style.display = 'block';
+      
+      // Scheduling only applies to Standard letter
+      if (typeBase === 100) {
+        schedGroup.style.display = 'block';
+        calcCta.href = 'write.html';
+      } else {
+        schedGroup.style.display = 'none';
+        // Set link for specific monthly club
+        let clubId = 'healing';
+        if (typeBase === 200) clubId = 'fan';
+        else if (typeBase === 220) clubId = 'vintage';
+        else if (typeBase === 250) clubId = 'horoscope';
+        calcCta.href = `write.html?club=${clubId}`;
+      }
+
+      let total = typeBase;
+      const wordSurcharge = parseInt(calcWords.value);
+      total += wordSurcharge;
+      
+      // Handwritten calculation
+      if (calcHandwritten.checked) {
+        let hwSurcharge = 20;
+        if (wordSurcharge > 0) {
+          hwSurcharge = 40; // scales up to 40 for >500 words
+        }
+        total += hwSurcharge;
+      }
+
+      // Schedule charge
+      if (typeBase === 100) {
+        total += parseInt(calcSchedule.value);
+      }
+
+      calcTotal.textContent = `NPR ${total}`;
+    }
+
+    // Bind listeners
+    calcType.addEventListener('change', runCalculator);
+    calcWords.addEventListener('change', runCalculator);
+    calcHandwritten.addEventListener('change', runCalculator);
+    calcSchedule.addEventListener('change', runCalculator);
+    
+    // Initial run
+    window.addEventListener('DOMContentLoaded', runCalculator);
+  </script>
+</body>
+</html>

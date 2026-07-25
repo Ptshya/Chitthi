@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chitthi Writing Desk. Compose your letter, personalize, and schedule it.">
+  <title>Writing Desk — Chitthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .write-header {
+      padding: 40px 0 20px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 40px;
+    }
+    .desk-title {
+      font-size: 2.2rem;
+    }
+    .badge-theme {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: var(--color-primary);
+      color: #faf7f2;
+      font-family: var(--font-sc);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .draft-alert {
+      background-color: rgba(var(--color-accent-rgb), 0.05);
+      border: 1px solid var(--color-accent);
+      padding: 10px 15px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text);
+    }
+    .draft-alert button {
+      background: none;
+      border: none;
+      color: var(--color-primary);
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Delivery Banner -->
+  <div class="delivery-banner">
+    <span>✦ 100% Free Delivery Within Nepal ✦</span>
+    <button class="theme-switcher">✦ Dark Theme</button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-area">
+        <svg viewBox="0 0 100 100" class="logo-icon-svg">
+          <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z" fill="var(--color-primary)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 1"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
+          <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="var(--color-accent)"/>
+          <rect x="42" y="52" width="14" height="9" rx="1" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M42 52 L49 57.5 L56 52" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M57 38 L58.5 41 L61.5 41 L59 43 L60 46 L57 44 L54 46 L55 43 L52.5 41 L55.5 41 Z" fill="var(--color-accent)"/>
+          <path d="M36 68 C40 68, 48 65, 54 58" fill="none" stroke="var(--color-accent)" stroke-width="0.8"/>
+          <path d="M42 66 C42 64, 45 64, 45 66 Z" fill="var(--color-accent)"/>
+          <path d="M48 63 C47 61, 50 61, 50 63 Z" fill="var(--color-accent)"/>
+          <path d="M52 60 C51 58, 54 58, 54 60 Z" fill="var(--color-accent)"/>
+        </svg>
+        <div>
+          <span class="logo-text">CHITTHI</span>
+          <span class="logo-subtext">Letters that arrive when memories matter most</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="clubs.html" class="nav-link">Clubs</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="story.html" class="nav-link">Our Story</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="events.html" class="nav-link">Events</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost auth-trigger">Login</button>
+        <a href="write.html" class="btn btn-primary active">Write Now &rarr;</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container section-padding" style="padding-top: 20px;">
+    <!-- Step Navigation Bar -->
+    <div class="checkout-nav-bar">
+      <div class="checkout-nav-item active" id="nav-step-1">1. Write & Personalize</div>
+      <div class="checkout-nav-item" id="nav-step-2">2. Delivery Address</div>
+      <div class="checkout-nav-item" id="nav-step-3">3. Final Payment</div>
+    </div>
+
+    <!-- Draft alert indicator -->
+    <div class="draft-alert" id="draft-alert">
+      <span>Saved draft found (expires in 10 days).</span>
+      <div>
+        <button id="restore-draft-btn">Restore Draft</button>
+        <button id="discard-draft-btn" style="margin-left: 15px; text-decoration: none; color: var(--color-text-muted);">Discard</button>
+      </div>
+    </div>
+
+    <div class="write-layout">
+      <!-- Left side: Live Letter Preview (Looks like physical paper) -->
+      <div class="paper-preview-container">
+        <div class="control-label">Live Stationery Preview</div>
+        <div class="paper-sheet" id="paper-sheet">
+          <svg viewBox="0 0 100 100" class="paper-watermark">
+            <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z"/>
+            <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="#d4af37"/>
+          </svg>
+          <div class="letter-to-from" id="preview-to-from">
+            To: <span id="preview-to">...</span><br>
+            From: <span id="preview-from">...</span>
+          </div>
+          <div class="letter-body-preview font-classic-serif" id="preview-body">Begin typing your letter on the right...</div>
+        </div>
+      </div>
+
+      <!-- Right side: Work Panel -->
+      <div class="control-panel">
+        <div class="badge-theme" id="selected-theme-badge">Standard Letter</div>
+        
+        <!-- STEP 1: Compose and Customize -->
+        <div class="checkout-step active" id="step-1">
+          <h2 style="font-size: 1.8rem; margin-bottom: 24px; font-style: normal;">The Writing Desk</h2>
+          
+          <div class="control-group">
+            <label class="control-label" for="letter-to">To (Recipient Name)</label>
+            <input type="text" id="letter-to" class="form-input" placeholder="e.g. Priyadarshani Joshi" required>
+          </div>
+
+          <div class="control-group" id="from-group">
+            <label class="control-label" for="letter-from">From (Sender Name)</label>
+            <input type="text" id="letter-from" class="form-input" placeholder="e.g. Aarav Devkota" required>
+          </div>
+
+          <!-- Body Text Area -->
+          <div class="control-group" id="body-group">
+            <label class="control-label" for="letter-body">Letter Body</label>
+            <textarea id="letter-body" class="form-textarea" placeholder="Write your letter here..."></textarea>
+            <div class="word-counter-area">
+              <span id="word-count-warning" style="color: var(--color-primary); font-weight: bold; display: none;">Ticked box needed to exceed 500 words!</span>
+              <span><span id="char-count">0</span> words (Max <span id="max-words">500</span>)</span>
+            </div>
+          </div>
+
+          <!-- Custom Options Toggles -->
+          <div class="control-group">
+            <label class="control-label">Luxury Add-ons</label>
+            
+            <label class="option-checkbox-container" id="word-toggle-container">
+              <input type="checkbox" id="toggle-more-words">
+              <span class="custom-checkbox"></span>
+              <span style="font-size: 0.95rem;">I need more than 500 words (+NPR 20)</span>
+            </label>
+
+            <label class="option-checkbox-container" id="handwritten-toggle-container">
+              <input type="checkbox" id="toggle-handwritten">
+              <span class="custom-checkbox"></span>
+              <span style="font-size: 0.95rem;">Hand-written by Chitthi (+NPR 20 / 500 words)</span>
+            </label>
+          </div>
+
+          <!-- Scheduling Options (Standard vs Future Letter) -->
+          <div class="control-group" id="scheduling-group">
+            <label class="control-label">Delivery Schedule</label>
+            <div class="delivery-options-grid">
+              <div class="delivery-card active" data-value="standard">
+                <input type="radio" name="delivery-mode" value="standard" checked>
+                <div class="delivery-card-title">Standard Delivery</div>
+                <div class="delivery-card-desc">Arrives within 1st week of writing (Free)</div>
+              </div>
+              <div class="delivery-card" data-value="future">
+                <input type="radio" name="delivery-mode" value="future">
+                <div class="delivery-card-title">Future Capsule</div>
+                <div class="delivery-card-desc">Deliver later than 1 week (Escalating fee)</div>
+              </div>
+            </div>
+
+            <!-- Custom date selector (hidden by default) -->
+            <div id="future-date-picker-area" style="display: none;">
+              <label class="control-label" for="future-date" style="font-size: 0.75rem;">Choose Future Date</label>
+              <input type="date" id="future-date" class="form-input" style="margin-bottom: 10px;">
+              <p style="font-size: 0.85rem; color: var(--color-accent);" id="future-cost-notice">Delivery charge: +NPR 50</p>
+            </div>
+          </div>
+
+          <button id="to-step-2-btn" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Continue to Address &rarr;</button>
+        </div>
+
+        <!-- STEP 2: Address Form -->
+        <div class="checkout-step" id="step-2">
+          <h2 style="font-size: 1.8rem; margin-bottom: 24px; font-style: normal;">Delivery Address</h2>
+          
+          <div class="control-group">
+            <label class="control-label" for="address-name">Recipient Name</label>
+            <input type="text" id="address-name" class="form-input" required readonly>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="address-phone">Phone Number</label>
+            <input type="tel" id="address-phone" class="form-input" placeholder="e.g. 98XXXXXXXX" required>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="address-street">Detailed Street Address / Landmark</label>
+            <input type="text" id="address-street" class="form-input" placeholder="e.g. Ward 3, Jhamsikhel, near British School" required>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="address-city">City / District</label>
+            <input type="text" id="address-city" class="form-input" placeholder="e.g. Lalitpur" required>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="address-postal">Postal Code (Optional)</label>
+            <input type="text" id="address-postal" class="form-input" placeholder="e.g. 44600">
+          </div>
+
+          <div style="display: flex; gap: 15px; margin-top: 30px;">
+            <button id="back-to-step-1-btn" class="btn btn-secondary" style="flex: 1;">&larr; Back</button>
+            <button id="to-step-3-btn" class="btn btn-primary" style="flex: 1.5;">Proceed to Payment &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Payment Section -->
+        <div class="checkout-step" id="step-3">
+          <h2 style="font-size: 1.8rem; margin-bottom: 24px; font-style: normal;">Complete Payment</h2>
+          <p>Please select your preferred digital payment gateway to process the transaction.</p>
+
+          <div class="payment-selector">
+            <div class="payment-btn active" data-gateway="esewa">
+              <!-- Inline mock SVG logo for eSewa -->
+              <svg viewBox="0 0 100 35" style="height: 24px; fill: #60bb46;">
+                <rect width="100" height="35" rx="5" fill="#f8fdf6"/>
+                <text x="50" y="23" font-family="var(--font-body)" font-weight="bold" font-size="16" text-anchor="middle" fill="#60bb46">eSewa</text>
+              </svg>
+              <span class="payment-btn-title">eSewa Wallet</span>
+            </div>
+            <div class="payment-btn" data-gateway="khalti">
+              <!-- Inline mock SVG logo for Khalti -->
+              <svg viewBox="0 0 100 35" style="height: 24px; fill: #5c2d91;">
+                <rect width="100" height="35" rx="5" fill="#faf5ff"/>
+                <text x="50" y="23" font-family="var(--font-body)" font-weight="bold" font-size="16" text-anchor="middle" fill="#5c2d91">Khalti</text>
+              </svg>
+              <span class="payment-btn-title">Khalti Wallet</span>
+            </div>
+          </div>
+
+          <div class="price-summary-panel">
+            <div class="price-row">
+              <span id="summary-item-title">Base Letter Rate</span>
+              <span id="price-base">NPR 100</span>
+            </div>
+            <div class="price-row" id="price-word-row" style="display: none;">
+              <span>Expanded words (>500)</span>
+              <span>NPR 20</span>
+            </div>
+            <div class="price-row" id="price-handwritten-row" style="display: none;">
+              <span>Handwritten curation</span>
+              <span id="price-handwritten">NPR 20</span>
+            </div>
+            <div class="price-row" id="price-future-row" style="display: none;">
+              <span>Time Capsule Storage</span>
+              <span id="price-future">NPR 50</span>
+            </div>
+            <div class="price-row">
+              <span>Delivery Cost within Nepal</span>
+              <span style="color: var(--color-accent);">FREE</span>
+            </div>
+            <div class="price-row total">
+              <span>Total Price</span>
+              <span id="price-total">NPR 100</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 15px; margin-top: 30px;">
+            <button id="back-to-step-2-btn" class="btn btn-secondary" style="flex: 1;">&larr; Back</button>
+            <button id="checkout-finalize-btn" class="btn btn-primary" style="flex: 1.5;">Pay & Submit &rarr;</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Modal Overlay -->
+  <div id="success-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 500px; text-align: center;">
+      <!-- Elegant Success seal graphic -->
+      <svg viewBox="0 0 100 100" style="width: 80px; height: 80px; margin: 0 auto 20px auto; fill: var(--color-accent);">
+        <path d="M50 3 L63 15 L80 15 L80 32 L92 45 L80 58 L80 75 L63 75 L50 87 L37 75 L20 75 L20 58 L8 45 L20 32 L20 15 L37 15 Z" fill="var(--color-primary)"/>
+        <circle cx="50" cy="50" r="32" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <path d="M38 50 L46 58 L62 40" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2 style="font-size: 2.2rem; margin-bottom: 12px; font-style: normal; color: var(--color-accent);">Letter Sealed!</h2>
+      <h4 style="color: var(--color-text); margin-bottom: 24px;">Order Placed Successfully</h4>
+      
+      <p style="font-size: 0.95rem; margin-bottom: 30px;" id="success-message">
+        Your letter has been securely received by Chitthi. We will print it on fine stationery and deliver it.
+      </p>
+
+      <div style="background-color: var(--bg-primary); border: 1px solid var(--border-color); padding: 20px; text-align: left; margin-bottom: 30px;">
+        <div style="font-size: 0.85rem; color: var(--color-text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <span>Recipient:</span> <strong id="success-to" style="color: var(--color-text);">Priyadarshani Joshi</strong>
+          <span>Timeframe:</span> <strong id="success-timeframe" style="color: var(--color-text);">Standard (Within 1 week)</strong>
+          <span>Gateway:</span> <strong id="success-gateway" style="color: var(--color-text);">eSewa Wallet</strong>
+          <span>Amount Paid:</span> <strong id="success-paid" style="color: var(--color-accent);">NPR 100</strong>
+        </div>
+      </div>
+
+      <button id="success-home-btn" class="btn btn-primary" style="width: 100%;">Return to Home</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <svg viewBox="0 0 1440 200" class="mountain-silhouette" preserveAspectRatio="none">
+      <path d="M0,200 L1440,200 L1440,80 L1350,110 L1200,60 L1080,90 L920,40 L780,100 L650,55 L520,95 L380,45 L220,115 L110,65 L0,120 Z"/>
+    </svg>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
+        <p>Nepal's first future letter platform. Preserving emotions and delivering them exactly when they matter most.</p>
+        <p style="font-size: 0.9rem; color: var(--color-accent);">npchitthi@gmail.com<br>Instagram: @chitthi.np</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">The Snail Mail Clubs</a></li>
+          <li><a href="write.html">Write a Letter</a></li>
+          <li><a href="pricing.html">Pricing Transparency</a></li>
+          <li><a href="events.html">Upcoming Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">Common Questions (FAQ)</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy & Encryption</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Encrypt & Secure</h4>
+        <p>All digital letters are stored with secure server backups and printed near the release date to ensure complete confidentiality.</p>
+        <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
+      <span class="footer-tagline">Every letter is a time capsule. 💌</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // --- Writing desk operational logic ---
+    let currentClub = 'standard';
+    let basePrice = 100;
+    let scheduledFee = 0;
+    
+    // Parse URL Parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const clubParam = urlParams.get('club');
+    
+    if (clubParam) {
+      currentClub = clubParam;
+    }
+
+    // Set configuration based on Club ID
+    const badge = document.getElementById('selected-theme-badge');
+    const fromGroup = document.getElementById('from-group');
+    const bodyGroup = document.getElementById('body-group');
+    const schedulingGroup = document.getElementById('scheduling-group');
+    const wordToggle = document.getElementById('word-toggle-container');
+    const handwrittenToggle = document.getElementById('handwritten-toggle-container');
+    const itemTitle = document.getElementById('summary-item-title');
+    const letterBodyInput = document.getElementById('letter-body');
+    const letterFromInput = document.getElementById('letter-from');
+    
+    const previewTo = document.getElementById('preview-to');
+    const previewFrom = document.getElementById('preview-from');
+    const previewBody = document.getElementById('preview-body');
+
+    // Calendar bounds configuration: Max is 5 years from today (July 18, 2026 -> July 18, 2031)
+    const today = new Date('2026-07-18');
+    const dateInput = document.getElementById('future-date');
+    
+    // Format YYYY-MM-DD
+    function formatDateString(d) {
+      const year = d.getFullYear();
+      let month = '' + (d.getMonth() + 1);
+      let day = '' + d.getDate();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      return [year, month, day].join('-');
+    }
+    
+    const minDate = new Date(today);
+    minDate.setDate(minDate.getDate() + 7); // Min scheduling is 1 week out
+    dateInput.min = formatDateString(minDate);
+    
+    const maxDate = new Date(today);
+    maxDate.setFullYear(maxDate.getFullYear() + 5); // Max is 5 years
+    dateInput.max = formatDateString(maxDate);
+
+    // Apply specific parameters based on club mode
+    if (currentClub === 'healing') {
+      basePrice = 180;
+      badge.textContent = 'Healing Club (Monthly Sub)';
+      letterFromInput.value = 'Chitthi';
+      letterFromInput.disabled = true;
+      fromGroup.style.display = 'none';
+      schedulingGroup.style.display = 'none';
+      itemTitle.textContent = 'Healing Club Base Rate';
+    } else if (currentClub === 'fan') {
+      basePrice = 200;
+      badge.textContent = 'Fan Club (Monthly Sub)';
+      letterFromInput.value = 'Chitthi';
+      letterFromInput.disabled = true;
+      fromGroup.style.display = 'none';
+      schedulingGroup.style.display = 'none';
+      itemTitle.textContent = 'Fan Club Base Rate';
+    } else if (currentClub === 'vintage') {
+      basePrice = 220;
+      badge.textContent = 'Vintage Club (Monthly Sub)';
+      letterFromInput.value = 'Chitthi';
+      letterFromInput.disabled = true;
+      fromGroup.style.display = 'none';
+      schedulingGroup.style.display = 'none';
+      itemTitle.textContent = 'Vintage Club Base Rate';
+    } else if (currentClub === 'horoscope') {
+      basePrice = 250;
+      badge.textContent = 'Horoscope Club (Monthly Sub)';
+      letterFromInput.value = 'Chitthi';
+      letterFromInput.disabled = true;
+      fromGroup.style.display = 'none';
+      schedulingGroup.style.display = 'none';
+      itemTitle.textContent = 'Horoscope Club Base Rate';
+    } else if (currentClub === 'annual') {
+      basePrice = 2000;
+      badge.textContent = 'Annual Mystery Snail Mail';
+      letterFromInput.value = 'Chitthi';
+      letterFromInput.disabled = true;
+      fromGroup.style.display = 'none';
+      schedulingGroup.style.display = 'none';
+      wordToggle.style.display = 'none';
+      handwrittenToggle.style.display = 'none';
+      bodyGroup.style.display = 'none';
+      itemTitle.textContent = 'Annual Subscription Rate';
+      
+      // Fixed preview for annual
+      previewBody.innerHTML = `<em>The letter content for upcoming monthly packages will be beautifully written and curated by the Chitthi team according to each month's mystery theme.</em>`;
+      previewFrom.textContent = 'Chitthi';
+    } else {
+      // Standard / Future Letter default
+      currentClub = 'standard';
+      basePrice = 100;
+      badge.textContent = 'Standard / Future Letter';
+      itemTitle.textContent = 'Base Letter Rate';
+    }
+
+    // --- Live previews triggers ---
+    document.getElementById('letter-to').addEventListener('input', (e) => {
+      previewTo.textContent = e.target.value || '...';
+    });
+
+    if (currentClub === 'standard') {
+      document.getElementById('letter-from').addEventListener('input', (e) => {
+        previewFrom.textContent = e.target.value || '...';
+      });
+    } else {
+      previewFrom.textContent = 'Chitthi';
+    }
+
+    // --- Dynamic word counting ---
+    const textarea = document.getElementById('letter-body');
+    const charCountEl = document.getElementById('char-count');
+    const maxWordsEl = document.getElementById('max-words');
+    const moreWordsCheckbox = document.getElementById('toggle-more-words');
+    const wordWarning = document.getElementById('word-count-warning');
+
+    textarea.addEventListener('input', () => {
+      let text = textarea.value;
+      let words = text.trim().split(/\s+/).filter(Boolean);
+      let wordCount = words.length;
+      let limit = moreWordsCheckbox.checked ? 1000 : 500;
+      
+      if (wordCount > limit) {
+        // Truncate to limit
+        const truncatedText = words.slice(0, limit).join(' ');
+        textarea.value = truncatedText;
+        wordCount = limit;
+        if (!moreWordsCheckbox.checked) {
+          wordWarning.style.display = 'inline';
+        }
+      } else {
+        wordWarning.style.display = 'none';
+      }
+      
+      charCountEl.textContent = wordCount;
+      previewBody.textContent = textarea.value || 'Begin typing your letter on the right...';
+      
+      // Update price calculation because handwriting cost scales with word count
+      calculatePrice();
+      saveDraft();
+    });
+
+    // Checkbox toggles trigger price re-eval
+    moreWordsCheckbox.addEventListener('change', () => {
+      maxWordsEl.textContent = moreWordsCheckbox.checked ? '1000' : '500';
+      if (!moreWordsCheckbox.checked) {
+        // Enforce immediate reduction if current text exceeds 500
+        let words = textarea.value.trim().split(/\s+/).filter(Boolean);
+        if (words.length > 500) {
+          textarea.value = words.slice(0, 500).join(' ');
+          charCountEl.textContent = 500;
+          previewBody.textContent = textarea.value;
+        }
+      }
+      calculatePrice();
+      saveDraft();
+    });
+
+    document.getElementById('toggle-handwritten').addEventListener('change', () => {
+      calculatePrice();
+      saveDraft();
+    });
+
+    // --- Scheduling Selection ---
+    const deliveryCards = document.querySelectorAll('.delivery-card');
+    const datePickerArea = document.getElementById('future-date-picker-area');
+    
+    deliveryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        deliveryCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        const radio = card.querySelector('input');
+        radio.checked = true;
+        
+        if (radio.value === 'future') {
+          datePickerArea.style.display = 'block';
+          // Default date to 1 month out if empty
+          if (!dateInput.value) {
+            const defaultDate = new Date(today);
+            defaultDate.setMonth(defaultDate.getMonth() + 1);
+            dateInput.value = formatDateString(defaultDate);
+          }
+          calculateFutureFee();
+        } else {
+          datePickerArea.style.display = 'none';
+          scheduledFee = 0;
+          calculatePrice();
+        }
+        saveDraft();
+      });
+    });
+
+    dateInput.addEventListener('change', () => {
+      calculateFutureFee();
+      saveDraft();
+    });
+
+    function calculateFutureFee() {
+      if (!dateInput.value) return;
+      
+      const selected = new Date(dateInput.value);
+      const diffTime = Math.abs(selected - today);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffDays <= 7) {
+        scheduledFee = 0;
+      } else {
+        const diffYears = diffDays / 365.25;
+        if (diffYears <= 1) {
+          scheduledFee = 50;
+        } else if (diffYears <= 2) {
+          scheduledFee = 100;
+        } else if (diffYears <= 3) {
+          scheduledFee = 150;
+        } else if (diffYears <= 4) {
+          scheduledFee = 200;
+        } else {
+          scheduledFee = 250;
+        }
+      }
+      document.getElementById('future-cost-notice').textContent = `Time capsule fee: +NPR ${scheduledFee}`;
+      calculatePrice();
+    }
+
+    // --- Dynamic Pricing Core ---
+    let totalPaidPrice = 100;
+    
+    function calculatePrice() {
+      // 1. Base rate
+      document.getElementById('price-base').textContent = `NPR ${basePrice}`;
+      let tempTotal = basePrice;
+      
+      // 2. Word count surcharge (not applicable to annual)
+      if (currentClub !== 'annual' && moreWordsCheckbox.checked) {
+        document.getElementById('price-word-row').style.display = 'flex';
+        tempTotal += 20;
+      } else {
+        document.getElementById('price-word-row').style.display = 'none';
+      }
+
+      // 3. Handwriting surcharge (not applicable to annual)
+      if (currentClub !== 'annual' && document.getElementById('toggle-handwritten').checked) {
+        document.getElementById('price-handwritten-row').style.display = 'flex';
+        // Check if more words is ticked and text size is > 500
+        let words = textarea.value.trim().split(/\s+/).filter(Boolean);
+        let handwritingSurcharge = 20;
+        if (moreWordsCheckbox.checked && words.length > 500) {
+          handwritingSurcharge = 40;
+        }
+        document.getElementById('price-handwritten').textContent = `NPR ${handwritingSurcharge}`;
+        tempTotal += handwritingSurcharge;
+      } else {
+        document.getElementById('price-handwritten-row').style.display = 'none';
+      }
+
+      // 4. Scheduling surcharge (only applicable to standard)
+      if (currentClub === 'standard' && document.querySelector('input[name="delivery-mode"]:checked').value === 'future') {
+        document.getElementById('price-future-row').style.display = 'flex';
+        document.getElementById('price-future').textContent = `NPR ${scheduledFee}`;
+        tempTotal += scheduledFee;
+      } else {
+        document.getElementById('price-future-row').style.display = 'none';
+      }
+
+      totalPaidPrice = tempTotal;
+      document.getElementById('price-total').textContent = `NPR ${totalPaidPrice}`;
+    }
+
+    // --- Local Draft Storage Logic ---
+    function saveDraft() {
+      const draftObj = {
+        club: currentClub,
+        to: document.getElementById('letter-to').value,
+        from: document.getElementById('letter-from').value,
+        body: textarea.value,
+        moreWords: moreWordsCheckbox.checked,
+        handwritten: document.getElementById('toggle-handwritten').checked,
+        deliveryMode: document.querySelector('input[name="delivery-mode"]')?.checked ? document.querySelector('input[name="delivery-mode"]:checked').value : 'standard',
+        futureDate: dateInput.value,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('chitthi_draft', JSON.stringify(draftObj));
+    }
+
+    function checkDraft() {
+      const saved = localStorage.getItem('chitthi_draft');
+      if (saved) {
+        try {
+          const draftObj = JSON.parse(saved);
+          const ageInDays = (Date.now() - draftObj.timestamp) / (1000 * 60 * 60 * 24);
+          
+          if (ageInDays <= 10 && draftObj.club === currentClub) {
+            document.getElementById('draft-alert').style.display = 'flex';
+          } else if (ageInDays > 10) {
+            // Delete expired draft
+            localStorage.removeItem('chitthi_draft');
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    document.getElementById('restore-draft-btn').addEventListener('click', () => {
+      const saved = localStorage.getItem('chitthi_draft');
+      if (saved) {
+        const draftObj = JSON.parse(saved);
+        document.getElementById('letter-to').value = draftObj.to;
+        previewTo.textContent = draftObj.to || '...';
+        
+        if (currentClub === 'standard') {
+          document.getElementById('letter-from').value = draftObj.from;
+          previewFrom.textContent = draftObj.from || '...';
+        }
+        
+        textarea.value = draftObj.body;
+        previewBody.textContent = draftObj.body || 'Begin typing your letter on the right...';
+        charCountEl.textContent = draftObj.body.trim().split(/\s+/).filter(Boolean).length;
+        
+        moreWordsCheckbox.checked = draftObj.moreWords;
+        maxWordsEl.textContent = draftObj.moreWords ? '1000' : '500';
+        
+        document.getElementById('toggle-handwritten').checked = draftObj.handwritten;
+        
+        if (currentClub === 'standard') {
+          const deliveryRadio = document.querySelector(`input[name="delivery-mode"][value="${draftObj.deliveryMode}"]`);
+          if (deliveryRadio) {
+            deliveryRadio.checked = true;
+            deliveryCards.forEach(c => c.classList.remove('active'));
+            deliveryRadio.closest('.delivery-card').classList.add('active');
+            
+            if (draftObj.deliveryMode === 'future') {
+              datePickerArea.style.display = 'block';
+              dateInput.value = draftObj.futureDate;
+              calculateFutureFee();
+            }
+          }
+        }
+        
+        calculatePrice();
+        document.getElementById('draft-alert').style.display = 'none';
+      }
+    });
+
+    document.getElementById('discard-draft-btn').addEventListener('click', () => {
+      localStorage.removeItem('chitthi_draft');
+      document.getElementById('draft-alert').style.display = 'none';
+    });
+
+    // --- Multi-step Wizard Navigation ---
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const step3 = document.getElementById('step-3');
+    
+    const nav1 = document.getElementById('nav-step-1');
+    const nav2 = document.getElementById('nav-step-2');
+    const nav3 = document.getElementById('nav-step-3');
+
+    document.getElementById('to-step-2-btn').addEventListener('click', () => {
+      // Validate step 1 fields
+      const toVal = document.getElementById('letter-to').value.trim();
+      const fromVal = document.getElementById('letter-from').value.trim();
+      const bodyVal = textarea.value.trim();
+      
+      if (!toVal) {
+        alert('Please fill out the recipient name.');
+        return;
+      }
+      if (currentClub === 'standard' && !fromVal) {
+        alert('Please fill out the sender name.');
+        return;
+      }
+      if (currentClub !== 'annual' && !bodyVal) {
+        alert('Please write some content inside the letter body.');
+        return;
+      }
+      if (currentClub === 'standard' && document.querySelector('input[name="delivery-mode"]:checked').value === 'future' && !dateInput.value) {
+        alert('Please select a valid scheduled date.');
+        return;
+      }
+
+      // Populate address recipient
+      document.getElementById('address-name').value = toVal;
+
+      // Navigate
+      step1.classList.remove('active');
+      step2.classList.add('active');
+      nav1.classList.remove('active');
+      nav2.classList.add('active');
+    });
+
+    document.getElementById('back-to-step-1-btn').addEventListener('click', () => {
+      step2.classList.remove('active');
+      step1.classList.add('active');
+      nav2.classList.remove('active');
+      nav1.classList.add('active');
+    });
+
+    document.getElementById('to-step-3-btn').addEventListener('click', () => {
+      // Validate step 2 fields
+      const phoneVal = document.getElementById('address-phone').value.trim();
+      const streetVal = document.getElementById('address-street').value.trim();
+      const cityVal = document.getElementById('address-city').value.trim();
+      
+      if (!phoneVal || !streetVal || !cityVal) {
+        alert('Please complete all address fields.');
+        return;
+      }
+
+      calculatePrice();
+
+      // Navigate
+      step2.classList.remove('active');
+      step3.classList.add('active');
+      nav2.classList.remove('active');
+      nav3.classList.add('active');
+    });
+
+    document.getElementById('back-to-step-2-btn').addEventListener('click', () => {
+      step3.classList.remove('active');
+      step2.classList.add('active');
+      nav3.classList.remove('active');
+      nav2.classList.add('active');
+    });
+
+    // --- Payment Gateway Selection ---
+    const payBtns = document.querySelectorAll('.payment-btn');
+    payBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        payBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // --- Final Check-out Action ---
+    document.getElementById('checkout-finalize-btn').addEventListener('click', () => {
+      const activeGateway = document.querySelector('.payment-btn.active').dataset.gateway;
+      const toVal = document.getElementById('letter-to').value.trim();
+      
+      // Calculate timeframe details
+      let timeframeStr = 'Standard (Within 1 week)';
+      if (currentClub === 'standard') {
+        const mode = document.querySelector('input[name="delivery-mode"]:checked').value;
+        if (mode === 'future') {
+          timeframeStr = `Future delivery on ${dateInput.value} 🕊️`;
+        }
+      } else if (currentClub === 'annual') {
+        timeframeStr = '12 Monthly Mystery Letters';
+      } else {
+        timeframeStr = 'Monthly subscription (Next month first week)';
+      }
+
+      // Populate Success screen fields
+      document.getElementById('success-to').textContent = toVal;
+      document.getElementById('success-timeframe').textContent = timeframeStr;
+      document.getElementById('success-gateway').textContent = activeGateway === 'esewa' ? 'eSewa Wallet' : 'Khalti Wallet';
+      document.getElementById('success-paid').textContent = `NPR ${totalPaidPrice}`;
+
+      // Open Success Modal
+      document.getElementById('success-modal').classList.add('active');
+      
+      // Clean up draft storage
+      localStorage.removeItem('chitthi_draft');
+    });
+
+    document.getElementById('success-home-btn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+
+    // Run check on initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      checkDraft();
+      calculatePrice();
+    });
+  </script>
+</body>
+</html>

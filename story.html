@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the story of Chitthi Nepal, inspired by a grandmother's letter in Bhaktapur.">
+  <title>Our Story — Chitthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .story-letter {
+      background-color: #faf7f2;
+      color: #2c2523;
+      border: 1px solid #d9cdba;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 60px;
+      margin: 40px auto;
+      max-width: 700px;
+      position: relative;
+    }
+    .story-letter::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(44, 37, 35, 0.02) 1px, transparent 0);
+      background-size: 100% 28px;
+      margin-top: 48px;
+      pointer-events: none;
+    }
+    [data-theme="light"] .story-letter {
+      background-color: #ffffff;
+      border-color: #e5dac6;
+    }
+    .story-signature {
+      margin-top: 40px;
+      text-align: right;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: #6b121c;
+    }
+    .value-box {
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      background-color: var(--bg-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Delivery Banner -->
+  <div class="delivery-banner">
+    <span>✦ 100% Free Delivery Within Nepal ✦</span>
+    <button class="theme-switcher">✦ Dark Theme</button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-area">
+        <svg viewBox="0 0 100 100" class="logo-icon-svg">
+          <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z" fill="var(--color-primary)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 1"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
+          <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="var(--color-accent)"/>
+          <rect x="42" y="52" width="14" height="9" rx="1" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M42 52 L49 57.5 L56 52" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
+          <path d="M57 38 L58.5 41 L61.5 41 L59 43 L60 46 L57 44 L54 46 L55 43 L52.5 41 L55.5 41 Z" fill="var(--color-accent)"/>
+          <path d="M36 68 C40 68, 48 65, 54 58" fill="none" stroke="var(--color-accent)" stroke-width="0.8"/>
+          <path d="M42 66 C42 64, 45 64, 45 66 Z" fill="var(--color-accent)"/>
+          <path d="M48 63 C47 61, 50 61, 50 63 Z" fill="var(--color-accent)"/>
+          <path d="M52 60 C51 58, 54 58, 54 60 Z" fill="var(--color-accent)"/>
+        </svg>
+        <div>
+          <span class="logo-text">CHITTHI</span>
+          <span class="logo-subtext">Letters that arrive when memories matter most</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="clubs.html" class="nav-link">Clubs</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="story.html" class="nav-link active">Our Story</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="events.html" class="nav-link">Events</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost auth-trigger">Login</button>
+        <a href="write.html" class="btn btn-primary">Write Now &rarr;</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Story Hero -->
+  <header class="container" style="text-align: center; padding: 80px 0 20px 0;">
+    <h4 style="color: var(--color-accent); font-family: var(--font-sc); letter-spacing: 0.15em;">Our Narrative</h4>
+    <h2 style="font-size: 3rem;">A Promise Kept</h2>
+    <div class="section-divider-line"></div>
+  </header>
+
+  <!-- Grandmother Story Section -->
+  <main class="container" style="padding-bottom: 80px;">
+    
+    <div class="story-letter">
+      <p style="font-family: var(--font-display); font-size: 1.4rem; line-height: 1.8; color: #2c2523;">
+        A letter is a promise you keep to your future.<br><br>
+        Chitthi began as a letter that took ten years to arrive.<br><br>
+        A grandmother in Bhaktapur wrote to her granddaughter on the morning of her birth — a letter meant to be opened on the day she got married. Life took its turns. The letter was tucked inside a book, forgotten, then quietly rediscovered on a rainy afternoon, years after she was gone.<br><br>
+        That letter did more than any message ever could. It travelled through time.<br><br>
+        We built Chitthi so that everyone in Nepal could send letters like that one — letters that arrive not when it's convenient, but when it matters most. On birthdays. Anniversaries. Graduations. On the days we wish we had someone's voice, and instead, we have their words.
+      </p>
+      <div class="story-signature">
+        — the Chitthi team ✦
+      </div>
+    </div>
+
+    <!-- Team Values / Details -->
+    <section class="section-padding" style="padding-top: 40px;">
+      <div class="section-header">
+        <h4 style="color: var(--color-accent);">Team Manka Kura</h4>
+        <h2>Our Core Beliefs</h2>
+        <div class="section-divider-line"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
+        <div class="value-box">
+          <h3 style="margin-bottom: 15px; color: var(--color-accent);">Tactile Over Digital</h3>
+          <p style="font-size: 0.95rem;">
+            In an era where thousands of notifications are sent daily on WhatsApp and Messenger, special words get buried instantly. We believe physical ink and textured paper carry weight, intention, and longevity that a screen can never replicate.
+          </p>
+        </div>
+
+        <div class="value-box">
+          <h3 style="margin-bottom: 15px; color: var(--color-accent);">Slow living & Aesthetics</h3>
+          <p style="font-size: 0.95rem;">
+            Inspired by journaling, scraping, and vintage craftsmanship, our packaging is treated like a work of art. By combining quality cardstock, keychains, themed stamps, and wax seals, we turn simple correspondence into a luxury gifting experience.
+          </p>
+        </div>
+
+        <div class="value-box">
+          <h3 style="margin-bottom: 15px; color: var(--color-accent);">Total Delivery Trust</h3>
+          <p style="font-size: 0.95rem;">
+            Whether a letter is destined for next week or five years from now, our commitment is absolute. We employ secure backups for digital scheduling and maintain a structured packaging workflow to deliver your words exactly on the target anniversary.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="write.html" class="btn btn-primary">Start Your Letter Today</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <svg viewBox="0 0 1440 200" class="mountain-silhouette" preserveAspectRatio="none">
+      <path d="M0,200 L1440,200 L1440,80 L1350,110 L1200,60 L1080,90 L920,40 L780,100 L650,55 L520,95 L380,45 L220,115 L110,65 L0,120 Z"/>
+    </svg>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
+        <p>Nepal's first future letter platform. Preserving emotions and delivering them exactly when they matter most.</p>
+        <p style="font-size: 0.9rem; color: var(--color-accent);">npchitthi@gmail.com<br>Instagram: @chitthi.np</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">The Snail Mail Clubs</a></li>
+          <li><a href="write.html">Write a Letter</a></li>
+          <li><a href="pricing.html">Pricing Transparency</a></li>
+          <li><a href="events.html">Upcoming Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">Common Questions (FAQ)</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy & Encryption</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Encrypt & Secure</h4>
+        <p>All digital letters are stored with secure server backups and printed near the release date to ensure complete confidentiality.</p>
+        <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
+      <span class="footer-tagline">Every letter is a time capsule. 💌</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
