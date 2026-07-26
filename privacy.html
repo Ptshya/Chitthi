@@ -5,21 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Privacy Policy and encryption systems at Chitthi.">
   <title>Privacy & Encryption — Chitthi</title>
+  <link rel="icon" type="image/png" href="images/sec-logo1.png"> 
   <link rel="stylesheet" href="style.css">
   <style>
-    .legal-content {
-      max-width: 800px;
+    /* Styled to match the box UI from the Contact Page */
+    .legal-content-wrapper {
+      max-width: 900px;
       margin: 40px auto;
-      line-height: 1.8;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 50px;
     }
-    .legal-content h3 {
-      margin: 30px 0 15px 0;
+    .legal-content-wrapper p.last-updated {
+      font-family: var(--font-sc);
+      font-size: 0.85rem;
       color: var(--color-accent);
-      font-style: normal;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    .legal-content p {
+    .legal-content-wrapper h3 {
+      margin: 40px 0 15px 0;
+      color: var(--color-text); /* Matched contact form heading color */
+      font-style: normal;
+      font-size: 1.4rem;
+    }
+    .legal-content-wrapper p {
       margin-bottom: 20px;
-      font-size: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+    @media (max-width: 768px) {
+      .legal-content-wrapper {
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
@@ -35,27 +55,12 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo-area">
-        <svg viewBox="0 0 100 100" class="logo-icon-svg">
-          <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z" fill="var(--color-primary)"/>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 1"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
-          <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="var(--color-accent)"/>
-          <rect x="42" y="52" width="14" height="9" rx="1" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
-          <path d="M42 52 L49 57.5 L56 52" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
-          <path d="M57 38 L58.5 41 L61.5 41 L59 43 L60 46 L57 44 L54 46 L55 43 L52.5 41 L55.5 41 Z" fill="var(--color-accent)"/>
-          <path d="M36 68 C40 68, 48 65, 54 58" fill="none" stroke="var(--color-accent)" stroke-width="0.8"/>
-          <path d="M42 66 C42 64, 45 64, 45 66 Z" fill="var(--color-accent)"/>
-          <path d="M48 63 C47 61, 50 61, 50 63 Z" fill="var(--color-accent)"/>
-          <path d="M52 60 C51 58, 54 58, 54 60 Z" fill="var(--color-accent)"/>
-        </svg>
-        <div>
-          <span class="logo-text">CHITTHI</span>
-          <span class="logo-subtext">Letters that arrive when memories matter most</span>
-        </div>
-      </a>
+        <img src="images/logo.png" alt="Chitthi Logo" class="logo-img" style="height: 140px; transform: translateY(10px);">
+       Chitthi</a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
+      <!-- Desktop Links -->
+      <ul class="nav-menu" style="font-family: var(--font-body);">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
         <li><a href="clubs.html" class="nav-link">Clubs</a></li>
         <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
         <li><a href="story.html" class="nav-link">Our Story</a></li>
@@ -63,9 +68,11 @@
         <li><a href="events.html" class="nav-link">Events</a></li>
       </ul>
 
+      <!-- Action Buttons -->
       <div class="nav-actions">
         <button class="btn btn-ghost auth-trigger">Login</button>
         <a href="write.html" class="btn btn-primary">Write Now &rarr;</a>
+        <!-- Hamburger Menu -->
         <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
           <span></span>
           <span></span>
@@ -82,45 +89,56 @@
     <div class="section-divider-line"></div>
   </header>
 
-  <!-- Legal content -->
-  <main class="container legal-content" style="padding-bottom: 80px;">
-    <p><em>Last updated: July 18, 2026</em></p>
-    
-    <p>
-      At Chitthi, we understand that writing a letter is a deeply personal and vulnerable act. We treat your messages, recipient addresses, and contact parameters with the highest degree of respect, confidentiality, and security.
-    </p>
+  <!-- Legal content (Now uses the bordered box UI) -->
+  <main class="container" style="padding-bottom: 80px;">
+    <div class="legal-content-wrapper">
+      <p class="last-updated">Last updated: July 18, 2026</p>
+      
+      <p style="font-size: 1.15rem; color: var(--color-accent); margin-bottom: 40px;">
+        At Chitthi, we understand that writing a letter is a deeply personal and 
+        vulnerable act. We treat your messages, recipient addresses, and contact 
+        parameters with the highest degree of respect, confidentiality, and security.
+      </p>
 
-    <h3>1. Zero-Read Policy</h3>
-    <p>
-      Our team operates under a strict **Zero-Read Policy** for standard and scheduled letters. The printing process is automated and handled under strict confidentiality protocols. Senders can rest assured that their personal words are not parsed, reviewed, or shared with third parties.
-    </p>
+      <h3>1. Zero-Read Policy</h3>
+      <p>
+        Our team operates under a strict <b>Zero-Read Policy</b> for standard and 
+        scheduled letters. The printing process is automated and handled under strict confidentiality protocols.
+         Senders can rest assured that their personal words are not parsed, reviewed, or shared with third parties.
+      </p>
 
-    <h3>2. Database Encryption Standards</h3>
-    <p>
-      All digital letter bodies submitted through our checkout wizard are encrypted at rest using AES-256 standards before being stored in our primary database. Secondary backup nodes are also encrypted to guarantee that data cannot be intercepted or leaked. Your messages are decrypted only at the printing hub near the target release window.
-    </p>
+      <h3>2. Database Encryption Standards</h3>
+      <p>
+        All digital letter bodies submitted through our checkout wizard are encrypted 
+        at rest using AES-256 standards before being stored in our primary database.
+        Secondary backup nodes are also encrypted to guarantee that data cannot be intercepted or leaked. Your messages are decrypted only at the printing hub near the target release window.
+      </p>
 
-    <h3>3. Local Browser Storage (Cookies & Cache)</h3>
-    <p>
-      We use local storage (`localStorage`) in your browser to save active drafts. This draft data expires and is permanently cleared after **10 days** from the timestamp of creation. We do not use trackers, analytical cookies, or adware scripts.
-    </p>
+      <h3>3. Local Browser Storage (Cookies & Cache)</h3>
+      <p>
+        We use local storage (`localStorage`) in your browser to save active drafts. 
+        This draft data expires and is permanently cleared after <b>10 days</b> from the
+        timestamp of creation. We do not use trackers, analytical cookies, or adware scripts.
+      </p>
 
-    <h3>4. Transactional Security</h3>
-    <p>
-      Chitthi does not collect or store your payment details. All financial transactions are completed via integrated eSewa and Khalti APIs. Your session credentials and wallet keys are securely processed directly on their encrypted servers.
-    </p>
+      <h3>4. Transactional Security</h3>
+      <p>
+        Chitthi does not collect or store your payment details. All financial transactions
+        are completed via integrated eSewa and Khalti APIs. Your session credentials and
+        wallet keys are securely processed directly on their encrypted servers.
+      </p>
 
-    <h3>5. Data Deletion Requests</h3>
-    <p>
-      If you wish to cancel a future scheduled letter and request the permanent deletion of your encrypted text from our digital vault prior to the delivery window, please contact our support team at <strong style="color: var(--color-accent);">npchitthi@gmail.com</strong> with your transaction ID.
-    </p>
+      <h3>5. Data Deletion Requests</h3>
+      <p>
+        If you wish to cancel a future scheduled letter and request the permanent deletion 
+        of your encrypted text from our digital vault prior to the delivery window, please
+        contact our support team at <strong style="color: var(--color-accent);">npchitthi@gmail.com</strong> with your transaction ID.
+      </p>
+    </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (Matched to Contact Page) -->
   <footer class="footer">
-    <svg viewBox="0 0 1440 200" class="mountain-silhouette" preserveAspectRatio="none">
-      <path d="M0,200 L1440,200 L1440,80 L1350,110 L1200,60 L1080,90 L920,40 L780,100 L650,55 L520,95 L380,45 L220,115 L110,65 L0,120 Z"/>
-    </svg>
     <div class="container footer-grid">
       <div class="footer-col">
         <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
@@ -152,6 +170,7 @@
         <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
       </div>
     </div>
+
     <div class="container footer-bottom">
       <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
       <span class="footer-tagline">Every letter is a time capsule. 💌</span>
@@ -159,5 +178,6 @@
   </footer>
 
   <script src="main.js"></script>
-</body>
+</body> <!-- Cursor Trail Container -->
+<div id="cursor-trail"></div>
 </html>
