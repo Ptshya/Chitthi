@@ -19,6 +19,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const trailContainer = document.getElementById('cursor-trail');
+  const trailLogos = [];
+  const numLogos = 12; // How many logos make up the tail (12 is a good crescent length)
+
+  // 1. Generate the images for the tail
+  for (let i = 0; i < numLogos; i++) {
+    const img = document.createElement('img');
+    img.src = 'images/logobright.png'; // <-- YOUR LOGO FILE HERE
+    img.className = 'trail-logo';
+    
+    // Fade out and shrink the logos further back in the tail
+    img.style.opacity = 1 - (i / numLogos); 
+    img.style.width = (24 - i * 1.5) + 'px'; // Starts at 24px, shrinks down
+    
+    trailContainer.appendChild(img);
+    trailLogos.push({ x: 0, y: 0, el: img });
+  }
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  // 2. Track the actual mouse position
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // 3. Animate the tail smoothly
+  function animateTrail() {
+    let targetX = mouseX;
+    let targetY = mouseY;
+
+    trailLogos.forEach((logo, index) => {
+      // The math that creates the smooth, elastic follow effect
+      logo.x += (targetX - logo.x) * 0.35; // Change 0.35 to adjust the "stiffness" (lower = longer, lazier tail)
+      logo.y += (targetY - logo.y) * 0.35;
+
+      logo.el.style.left = logo.x + 'px';
+      logo.el.style.top = logo.y + 'px';
+
+      // The next logo's target becomes the CURRENT logo's position
+      targetX = logo.x;
+      targetY = logo.y;
+    });
+
+    requestAnimationFrame(animateTrail);
+  }
+
+  animateTrail();
+});
+
   function updateThemeSwitcherUI(theme) {
     const switchers = document.querySelectorAll('.theme-switcher');
     switchers.forEach(btn => {
