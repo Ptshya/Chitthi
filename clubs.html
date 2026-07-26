@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose your Snail Mail Club at Chitthi. Healing, Vintage, Horoscope, Fan Club, or the Annual Mystery Snail Mail.">
   <title>The Snail Mail Clubs — Chitthi</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/sec-logo1.png"><link rel="stylesheet" href="style.css">
   <style>
     .clubs-hero {
       text-align: center;
-      padding: 80px 0 40px 0;
     }
     .clubs-container {
       display: grid;
@@ -77,7 +76,6 @@
       align-items: center;
     }
     .annual-badge {
-      font-family: var(--font-sc);
       font-size: 0.8rem;
       background-color: var(--color-primary);
       color: #faf7f2;
@@ -95,12 +93,11 @@
       }
     }
   </style>
-</head>
-<body>
+</head> <body>
 
   <!-- Top Delivery Banner -->
   <div class="delivery-banner">
-    <span>✦ 100% Free Delivery Within Nepal ✦</span>
+    <span>✦ &nbsp; 100% Free Delivery Within Nepal &nbsp; ✦</span>
     <button class="theme-switcher">✦ Dark Theme</button>
   </div>
 
@@ -108,26 +105,11 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo-area">
-        <svg viewBox="0 0 100 100" class="logo-icon-svg">
-          <path d="M50 3 C65 2, 75 10, 85 20 C95 30, 98 45, 96 60 C94 75, 85 88, 70 94 C55 100, 35 98, 20 90 C5 82, 2 65, 3 50 C4 35, 10 20, 25 10 C40 0, 35 4, 50 3 Z" fill="var(--color-primary)"/>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 1"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
-          <path d="M46 32 C58 32, 66 42, 66 54 C66 66, 56 74, 44 74 C34 74, 30 68, 30 68 C30 68, 38 68, 44 60 C50 52, 46 40, 38 36 C42 33, 44 32, 46 32 Z" fill="var(--color-accent)"/>
-          <rect x="42" y="52" width="14" height="9" rx="1" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
-          <path d="M42 52 L49 57.5 L56 52" fill="none" stroke="var(--bg-primary)" stroke-width="1"/>
-          <path d="M57 38 L58.5 41 L61.5 41 L59 43 L60 46 L57 44 L54 46 L55 43 L52.5 41 L55.5 41 Z" fill="var(--color-accent)"/>
-          <path d="M36 68 C40 68, 48 65, 54 58" fill="none" stroke="var(--color-accent)" stroke-width="0.8"/>
-          <path d="M42 66 C42 64, 45 64, 45 66 Z" fill="var(--color-accent)"/>
-          <path d="M48 63 C47 61, 50 61, 50 63 Z" fill="var(--color-accent)"/>
-          <path d="M52 60 C51 58, 54 58, 54 60 Z" fill="var(--color-accent)"/>
-        </svg>
-        <div>
-          <span class="logo-text">CHITTHI</span>
-          <span class="logo-subtext">Letters that arrive when memories matter most</span>
-        </div>
-      </a>
+        <img src="images/logo.png" alt="Chitthi Logo" class="logo-img" style="height: 140px; transform: translateY(10px);">
+       Chitthi</a>
 
-      <ul class="nav-menu">
+      <!-- Desktop Links -->
+      <ul class="nav-menu" style="font-family: var(--font-body);">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="clubs.html" class="nav-link active">Clubs</a></li>
         <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
@@ -136,9 +118,11 @@
         <li><a href="events.html" class="nav-link">Events</a></li>
       </ul>
 
+      <!-- Action Buttons -->
       <div class="nav-actions">
         <button class="btn btn-ghost auth-trigger">Login</button>
         <a href="write.html" class="btn btn-primary">Write Now &rarr;</a>
+        <!-- Hamburger Menu -->
         <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
           <span></span>
           <span></span>
@@ -148,14 +132,15 @@
     </div>
   </nav>
 
+
   <!-- Main Clubs Content -->
-  <main class="container section-padding" style="padding-top: 60px;">
+  <main class="container section-padding">
     <div class="clubs-hero">
-      <h4 style="color: var(--color-accent); font-family: var(--font-sc); letter-spacing: 0.15em;">Themed Monthly Mail</h4>
-      <h2 style="font-size: 3rem;">Select Your Snail Mail Club</h2>
+      <h4 style="color: var(--color-accent);">Themed Monthly Snail Mail</h4>
+      <h2>Choose Your Club</h2>
       <div class="section-divider-line"></div>
       <p style="max-width: 700px; margin: 20px auto 0 auto;">
-        Write your heartfelt message and let Chitthi curate the paper, envelopes, bookmarks, stickers, and keychains that match the theme. Deliveries are dispatched in the first few days of the upcoming month.
+        A curated letter in your mailbox every month. Chitthi writes it. You feel it.
       </p>
     </div>
 
@@ -166,13 +151,14 @@
       <div class="club-detail-card">
         <span class="club-card-badge">✦ Emotional Comfort</span>
         <h3 class="club-card-title">Healing Club</h3>
-        <p class="club-card-description">Letters and curated tokens aimed at providing comfort, peace, mindfulness, and soothing emotions.</p>
+        <p class="club-card-description">Letters aimed at providing comfort, peace, mindfulness, and soothing 
+          emotions.</p>
         <div class="club-card-price">NPR 180 <span style="font-size: 0.9rem; font-weight: normal; color: var(--color-text-muted);">/ month</span></div>
         
         <ul class="club-features">
-          <li>Custom healing watercolor print envelope</li>
+          <li>Custom print envelope</li>
           <li>Curated floral/nature bookmark</li>
-          <li>Matching mindfulness sticker sheets</li>
+          <li>Matching sticker sheets and bookmarks</li>
           <li>Delivered: 1st few days of next month</li>
           <li>From: Chitthi</li>
         </ul>
@@ -243,8 +229,11 @@
           <span class="annual-badge">✦ Premium Secret Journey</span>
           <h2 style="font-size: 2.5rem; margin-bottom: 16px; font-style: normal;">Annual Mystery Snail Mail</h2>
           <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 24px;">
-            A secret curated envelope sent every month for a year. The themes and stationery contents are kept completely confidential until they land in the recipient's hands. Includes premium photo cards, stickers, keychains, and exclusive lucky winner add-ons. 
-            <br><strong style="color: var(--color-accent);">Chitthi curates and writes the letters completely</strong>—you only specify who receives them.
+            A secret curated envelope sent every month for a year. The themes and stationery contents are 
+            kept completely confidential until they land in the recipient's hands. Includes premium photo 
+            cards, stickers, keychains, and exclusive lucky winner add-ons. 
+            <br><strong style="font-family: var(--font-display); color: var(--color-accent);">Chitthi curates and writes the letters 
+              completely</strong>, you only specify who receives them.
           </p>
           <p style="font-size: 0.9rem; font-style: italic; color: var(--color-text-muted);">
             *Compulsory Login and Account creation required before subscribing.
@@ -265,11 +254,10 @@
     </div>
   </main>
 
-  <!-- Footer -->
+    <!-- Footer -->
   <footer class="footer">
-    <svg viewBox="0 0 1440 200" class="mountain-silhouette" preserveAspectRatio="none">
-      <path d="M0,200 L1440,200 L1440,80 L1350,110 L1200,60 L1080,90 L920,40 L780,100 L650,55 L520,95 L380,45 L220,115 L110,65 L0,120 Z"/>
-    </svg>
+
+    
     <div class="container footer-grid">
       <div class="footer-col">
         <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
@@ -301,6 +289,7 @@
         <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
       </div>
     </div>
+
     <div class="container footer-bottom">
       <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
       <span class="footer-tagline">Every letter is a time capsule. 💌</span>
@@ -348,5 +337,7 @@
       }
     }
   </script>
+  <!-- Cursor Trail Container -->
+<div id="cursor-trail"></div>
 </body>
 </html>
