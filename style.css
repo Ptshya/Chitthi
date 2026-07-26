@@ -9,25 +9,57 @@
 
 /* Color Palettes & Custom Properties */
 :root {
-  /* Default Theme: Dark Academia */
-  --bg-primary: #0e1217;
-  --bg-secondary: #171d24;
-  --color-primary: #8a1a24;       /* Rich Wax-Seal Burgundy */
-  --color-primary-rgb: 138, 26, 36;
-  --color-accent: #d4af37;        /* Antique Gold */
-  --color-accent-rgb: 212, 175, 55;
-  --color-accent-hover: #b8902e;
-  --color-text: #eae3d2;          /* Warm Ivory */
-  --color-text-muted: #a69f90;
-  --border-color: #383025;
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --paper-grain: rgba(255, 255, 255, 0.02);
-  
+
+ --bg-primary: #120A0B;   /* The very deep, warm brownish-black body background */
+  --bg-secondary: #1E1513; /* The slightly lighter espresso background used on the testimonial cards */
+
+  /* Primary Brand Colors */
+  --color-primary: #822032; /* The rich, deep wine/burgundy used for the top banner and 'Write a Letter' button */
+  --color-primary-hover: #9E263C; /* Slightly brighter for button hover states */
+
+  /* Accents & Highlights */
+  --color-accent: #C5A059; /* The antique gold used for headings, stars, and the envelope outline */
+  --color-accent-hover: #DFB769; /* Luminous gold for link hovers */
+
+  /* Typography */
+  --color-text: #EBE1D3;   /* The soft cream/parchment used for highly readable paragraph text */
+  --color-text-muted: #8A7A71; /* A warm, muted taupe for secondary text or inactive elements */
+
+  /* UI Elements */
+  --border-color: #362622; /* Soft, warm border color to subtly separate sections without harsh gray lines */
+
   --font-display: 'Cormorant Garamond', serif;
   --font-sc: 'Cormorant SC', serif;
   --font-body: 'DM Sans', sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --container-max: 1200px;
+}
+
+/* 1. Define the floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* Adjust this value to make the float higher or lower */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 2. Apply it to your image */
+.hero-img {
+  animation: float 6s ease-in-out infinite; /* 6s duration, smooth easing, loops forever */
+}
+
+/* Cursor Trail Styles */
+.trail-logo {
+  position: fixed;
+  pointer-events: none; /* Prevents the logos from blocking clicks! */
+  z-index: 9999;        /* Keeps the tail on top of everything */
+  transform: translate(-50%, -50%); /* Centers the image exactly on the cursor point */
+  will-change: transform, left, top;
 }
 
 [data-theme="light"] {
@@ -60,7 +92,7 @@ html {
 
 body {
   background-color: var(--bg-primary);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -68,7 +100,12 @@ body {
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
-
+.subtitle {
+      font-size: 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--color-accent);
+}
 /* Subtle Paper Texture Overlay */
 body::before {
   content: "";
@@ -120,7 +157,7 @@ a {
 /* Top Delivery Banner */
 .delivery-banner {
   background-color: var(--color-primary);
-  color: #faf7f2;
+  color: var(--color-accent);
   font-family: var(--font-sc);
   font-size: 0.8rem;
   letter-spacing: 0.15em;
@@ -131,7 +168,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+} 
 
 .banner-text {
   flex-grow: 1;
@@ -158,6 +196,40 @@ a {
   border-color: var(--color-accent);
 }
 
+.cta-band {
+  padding: 80px 0;
+  background: linear-gradient(90deg, #d42948 0%, var(--color-burgundy) 50%, #bc586b 100%);
+  text-align: center;
+  position: relative;
+}
+.cta-band::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23ffffff" fill-opacity="0.05"/></svg>');
+  opacity: 0.5;
+}
+.cta-band .container {
+  position: relative;
+  z-index: 2;
+}
+.cta-band h2 {
+  font-size: 2.5rem;
+  color: var(--color-cream);
+  margin-bottom: 1rem;
+}
+.cta-band p {
+  color: rgba(245, 237, 214, 0.8);
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+.cta-band .actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+
 /* Navigation Bar */
 .navbar {
   position: sticky;
@@ -176,9 +248,14 @@ a {
 
 .navbar-container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
   height: 80px;
+}
+
+.nav-link{
+  font-family: var(--font-display);
 }
 
 /* Elegant Logo Styles */
@@ -186,6 +263,9 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
 }
 
 .logo-icon-svg {
@@ -220,7 +300,7 @@ a {
 }
 
 .nav-link {
-  font-family: var(--font-sc);
+
   font-size: 0.85rem;
   letter-spacing: 0.1em;
   position: relative;
@@ -252,6 +332,35 @@ a {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  color: var(--color-accent);
+  font-family: 'Cormorant SC', serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  animation: pulse 2s infinite;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-muted), transparent);
+  margin-top: 10px;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
 }
 
 .btn {
@@ -376,14 +485,6 @@ a {
   align-items: center;
 }
 
-.hero-tagline {
-  font-family: var(--font-sc);
-  color: var(--color-accent);
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 20px;
-  display: block;
-}
 
 .hero-title {
   margin-bottom: 24px;
@@ -468,18 +569,22 @@ a {
   letter-spacing: 0.1em;
   margin-bottom: 16px;
   display: inline-block;
+  text-align: left;
 }
 
 .club-card-title {
   font-size: 1.8rem;
   margin-bottom: 16px;
   color: var(--color-text);
+  text-align: left;
 }
 
 .club-card-description {
   font-size: 0.95rem;
   margin-bottom: 30px;
+  color: var(--color-text-muted);
   flex-grow: 1;
+  text-align: left;
 }
 
 .club-card-price {
@@ -494,7 +599,7 @@ a {
   font-family: var(--font-sc);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   margin-top: 12px;
 }
 
