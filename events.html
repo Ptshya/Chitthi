@@ -7,7 +7,213 @@
   <title>Community & Events — Chitthi</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    .events-hero {<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chitthi community workshops and letter writing circles in Nepal. Coming soon.">
+  <title>Community & Events — Chitthi</title>
+  <link rel="icon" type="image/png" href="images/sec-logo1.png"><link rel="stylesheet" href="style.css">
+  <style>
     .events-hero {
+      text-align: center;
+      padding: 80px 0 40px 0;
+    }
+    .event-main-card {
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+      padding: 50px;
+      margin-top: 40px;
+      position: relative;
+    }
+    .event-main-card::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px dashed rgba(var(--color-accent-rgb), 0.12);
+      pointer-events: none;
+    }
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+      .event-main-card {
+        padding: 30px;
+      }
+    }
+    .coming-soon-badge {
+      font-family: var(--font-sc);
+      font-size: 0.75rem;
+      background-color: var(--color-primary);
+      color: #faf7f2;
+      padding: 4px 10px;
+      letter-spacing: 0.1em;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Delivery Banner -->
+  <div class="delivery-banner">
+    <span>✦ 100% Free Delivery Within Nepal ✦</span>
+    <button class="theme-switcher">✦ Dark Theme</button>
+  </div>
+
+<!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-area">
+        <img src="images/logo.png" alt="Chitthi Logo" class="logo-img" style="height: 140px; transform: translateY(10px);">
+       Chitthi</a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-menu" style="font-family: var(--font-body);">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="clubs.html" class="nav-link =">Clubs</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="story.html" class="nav-link">Our Story</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="events.html" class="nav-link active">Events</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button class="btn btn-ghost auth-trigger">Login</button>
+        <a href="write.html" class="btn btn-primary">Write Now &rarr;</a>
+        <!-- Hamburger Menu -->
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Events Content -->
+  <main class="container section-padding" style="padding-top: 40px; padding-bottom: 80px;">
+    
+    <div class="events-hero">
+      <h4 style="color: var(--color-accent); font-family: var(--font-sc); letter-spacing: 0.15em;">Stationery Community</h4>
+      <h2 style="font-size: 3rem;">Events & Workshops</h2>
+      <div class="section-divider-line"></div>
+      <p style="max-width: 650px; margin: 20px auto 0 auto;">
+        We believe that writing letters is a communal practice. We host gatherings events in Nepal to reconnect people with their analog voices.
+      </p>
+    </div>
+
+    <!-- Main coming soon card -->
+    <div class="event-main-card">
+      <div class="event-grid">
+        <div>
+          <span class="coming-soon-badge">✦ COMING SOON</span>
+          <h2 style="font-size: 2.2rem; font-style: normal; margin-bottom: 15px;">The Swastik Letter Writing Circle</h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">
+            An intimate morning gathering in Swastik College for analog stationery enthusiasts. Bring your letter 
+            writing supplies, scrapbooks, 
+            and sit down to write physical letters to your future selves. Customized vintage envelope packets, hot wax seal gear, 
+            and locally brewed warm tea will be provided completely free of charge.
+          </p>
+          <p style="font-size: 0.9rem; font-family: var(--font-sc); color: var(--color-accent);">EXPECTED TIMELINE: 10th of August 2026</p>
+        </div>
+        <div style="text-align: center; border-left: 1px dashed var(--border-color); padding-left: 20px;">
+          <h3 style="font-size: 1.6rem; margin-bottom: 12px; font-style: italic;">Join the Circle</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 20px; color: var(--color-text-muted);">Enter your email to receive early invitations and exclusive updates.</p>
+          
+          <form onclick="event.preventDefault(); alert('Thank you! You have joined the  Swastik COllege Letter Writing Circle waitlist.');" style="display: flex; flex-direction: column; gap: 12px;">
+            <input type="email" class="form-input" placeholder="yourname@domain.com" required style="background-color: var(--bg-primary);">
+            <button type="submit" class="btn btn-primary">Notify Me</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary events grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
+      
+      <!-- Dashain Mail -->
+      <div style="border: 1px solid var(--border-color); background-color: var(--bg-secondary); padding: 30px;">
+        <span class="coming-soon-badge" style="background-color: var(--border-color); color: var(--color-text-muted);">COMES OCTOBER 2026</span>
+        <h3 style="margin-bottom: 12px; font-style: normal;">Dashain Festive Mailboxes</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          A seasonal event allowing Nepali in Kathmandu to send blessed physical envelopes back home 
+          to outer districts. 
+      </div>
+
+      <!-- Letter to Younger Self Exhibition -->
+      <div style="border: 1px solid var(--border-color); background-color: var(--bg-secondary); padding: 30px;">
+        <span class="coming-soon-badge" style="background-color: var(--border-color); color: var(--color-text-muted);">COMES DECEMBER 2026</span>
+        <h3 style="margin-bottom: 12px; font-style: normal;">Letter to My Younger Self</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          An online submission program and print gallery exhibition celebrating self-reflection. 
+          Best essays will be posted in Chitthi's social media and win NRs 1000.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+    <!-- Footer -->
+  <footer class="footer">
+
+    
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: bold; color: var(--color-text);">CHITTHI</h4>
+        <p>Nepal's first future letter platform. Preserving emotions and delivering them exactly when they matter most.</p>
+        <p style="font-size: 0.9rem; color: var(--color-accent);">npchitthi@gmail.com<br>Instagram: @chitthi.np</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">The Snail Mail Clubs</a></li>
+          <li><a href="write.html">Write a Letter</a></li>
+          <li><a href="pricing.html">Pricing Transparency</a></li>
+          <li><a href="events.html">Upcoming Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">Common Questions (FAQ)</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy & Encryption</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Encrypt & Secure</h4>
+        <p>All digital letters are stored with secure server backups and printed near the release date to ensure complete confidentiality.</p>
+        <span style="font-family: var(--font-sc); font-size: 0.7rem; color: var(--color-accent); border: 1px solid var(--border-color); padding: 6px 12px; display: inline-block;">✦ SECURE WORKSPACE GUARANTEED</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="footer-copy">&copy; 2026 Chitthi Nepal. All rights reserved. Built by Team Manka Kura.</span>
+      <span class="footer-tagline">Every letter is a time capsule. 💌</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script> <!-- Cursor Trail Container -->
+<div id="cursor-trail"></div>
+</body>
+</html>
+
       text-align: center;
       padding: 80px 0 40px 0;
     }
