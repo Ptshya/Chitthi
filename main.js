@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── 2. Navbar & Mobile Menu ── */
+ /* ── 2. Navbar & Mobile Menu (Debug Version) ── */
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
@@ -38,10 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileToggle = document.querySelector('.mobile-nav-toggle');
   const navMenu = document.getElementById('mobile-menu');
 
+  console.log('Mobile Toggle found:', mobileToggle);
+  console.log('Nav Menu found:', navMenu);
+
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Hamburger clicked/touched!');
+      
       navMenu.classList.toggle('active');
       mobileToggle.classList.toggle('active');
+      
       document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
     
@@ -53,8 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
       });
     });
+  } else {
+    console.warn('Warning: Mobile toggle or menu element missing from DOM!');
   }
-
   /* ── 3. Scroll Reveal Animations ── */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
