@@ -4,7 +4,7 @@
    Primary Fonts: Cormorant Garamond, Cormorant SC, DM Sans
 */
 
-/* Font Imports */
+/* Font Imports 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+SC:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
 
 /* Color Palettes & Custom Properties */
@@ -151,21 +151,13 @@ a {
 }
 
 /* Top Delivery Banner */
-.delivery-banner {
-  background-color: var(--color-primary);
-  color: var(--color-accent);
-  font-family: var(--font-sc);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  padding: 8px 5%;
-  text-align: center;
-  position: relative;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-} 
+ .delivery-banner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 3%;
+    font-size: 0.7rem;
+  } 
 
 .banner-text {
   flex-grow: 1;
