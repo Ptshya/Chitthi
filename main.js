@@ -25,9 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── 2. Navbar & Mobile Menu ── */
-
-  const navbar = document.getElementById('navbar');
+/* ── 2. Navbar & Mobile Menu ── */
+  const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
       navbar?.classList.add('scrolled');
@@ -35,24 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar?.classList.remove('scrolled');
     }
   });
-const mobileToggle = document.querySelector('.mobile-nav-toggle');
-  const navMenu = document.getElementById('mobile-menu') || document.querySelector('.nav-menu');
 
-  console.log('Mobile Toggle found:', mobileToggle);
-  console.log('Nav Menu found:', navMenu);
+  const mobileToggle = document.querySelector('.mobile-nav-toggle');
+  const navMenu = document.getElementById('mobile-menu') || document.querySelector('.nav-menu');
 
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('Hamburger clicked/touched!');
-      
+      e.stopPropagation();
       navMenu.classList.toggle('active');
       mobileToggle.classList.toggle('active');
-      
       document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
     
-    // Close menu when link clicked
+    // Close menu when clicking links or outside
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -60,11 +54,15 @@ const mobileToggle = document.querySelector('.mobile-nav-toggle');
         document.body.style.overflow = '';
       });
     });
-  } else {
-    console.warn('Warning: Mobile toggle or menu element missing from DOM!');
+
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   }
-
-
    
   /* ── 3. Scroll Reveal Animations ── */
   const revealObserver = new IntersectionObserver((entries) => {
