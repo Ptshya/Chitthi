@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── 2. Navbar & Mobile Menu ── */
- /* ── 2. Navbar & Mobile Menu (Debug Version) ── */
+
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
@@ -76,6 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => {
     revealObserver.observe(el);
   });
+     document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    mobileToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
 
   /* ── 4. Hero Particles (Burgundy & Gold) ── */
   const particleContainer = document.getElementById('particles');
@@ -181,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertAdjacentHTML('beforeend', modalHtml);
   }
 
-  /* ── 6. The Cursor Trail Effect ── */
+
   /* ── 6. The Floating Moon / Particle Cursor Spread ── */
   const trailContainer = document.getElementById('cursor-trail');
   if (trailContainer) {
