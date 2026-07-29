@@ -64,6 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.warn('Warning: Mobile toggle or menu element missing from DOM!');
   }
+     document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    mobileToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+   
   /* ── 3. Scroll Reveal Animations ── */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -76,13 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => {
     revealObserver.observe(el);
   });
-     document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-    navMenu.classList.remove('active');
-    mobileToggle.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
+
 
   /* ── 4. Hero Particles (Burgundy & Gold) ── */
   const particleContainer = document.getElementById('particles');
