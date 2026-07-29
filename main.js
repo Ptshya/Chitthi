@@ -35,9 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar?.classList.remove('scrolled');
     }
   });
-
-  const mobileToggle = document.querySelector('.mobile-nav-toggle');
-  const navMenu = document.getElementById('mobile-menu');
+const mobileToggle = document.querySelector('.mobile-nav-toggle');
+  const navMenu = document.getElementById('mobile-menu') || document.querySelector('.nav-menu');
 
   console.log('Mobile Toggle found:', mobileToggle);
   console.log('Nav Menu found:', navMenu);
