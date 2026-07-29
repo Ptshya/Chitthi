@@ -475,6 +475,7 @@ a {
   background: none;
   border: none;
   color: var(--color-text-muted);
+  border: 1px solid #ffca69;
 }
 
 .btn-ghost:hover {
