@@ -64,13 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.warn('Warning: Mobile toggle or menu element missing from DOM!');
   }
-     document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-    navMenu.classList.remove('active');
-    mobileToggle.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
+
 
    
   /* ── 3. Scroll Reveal Animations ── */
